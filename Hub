@@ -6,9 +6,9 @@ frame.Position = UDim2.new(0.5, -100, 0.5, -150)
 frame.Parent = screenGui
 
 local scripts = {
-    ["Script 1"] = "https://example.com/script1.lua",
+    ["Script 1"] = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Speed",
     ["Script 2"] = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Jump",
-    ["Script 3"] = "https://example.com/script3.lua"
+    ["Script 3"] = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Fly"
 }
 
 for i, name in ipairs({"Script 1", "Script 2", "Script 3"}) do
