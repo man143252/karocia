@@ -1,0 +1,13 @@
+local scripts = {
+    ["Speed"] = "https://raw.githubusercontent.com/man143252/karocia/main/speed.lua",
+    ["Jump"]  = "https://raw.githubusercontent.com/man143252/karocia/main/jump.lua",
+    ["Fly"]   = "https://raw.githubusercontent.com/man143252/karocia/main/fly.lua"
+}
+
+print("Choose a script to run:")
+for name,_ in pairs(scripts) do
+    print("- " .. name)
+end
+
+local choice = "Speed"  -- replace with "Jump" or "Fly" to test, or make input system
+loadstring(game:HttpGet(scripts[choice], true))()
