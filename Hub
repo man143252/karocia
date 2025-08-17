@@ -1,4 +1,3 @@
--- Example hub.lua snippet
 local screenGui = Instance.new("ScreenGui")
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 200, 0, 300)
@@ -6,21 +5,26 @@ frame.Position = UDim2.new(0.5, -100, 0.5, -150)
 frame.Parent = screenGui
 
 local scripts = {
-    ["Script 1"] = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Speed",
-    ["Script 2"] = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Jump",
-    ["Script 3"] = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Fly"
+    {name = "Speed Boost", url = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Speed"},
+    {name = "Jump Boost", url = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Jump"},
+    {name = "Fly Mode", url = "https://raw.githubusercontent.com/man143252/karocia/refs/heads/main/Fly"}
 }
 
-for i, name in ipairs({"Script 1", "Script 2", "Script 3"}) do
+for i, script in ipairs(scripts) do
     local button = Instance.new("TextButton")
     button.Size = UDim2.new(0, 180, 0, 50)
     button.Position = UDim2.new(0, 10, 0, 10 + (i-1)*60)
-    button.Text = name
+    button.Text = script.name
     button.Parent = frame
 
     button.MouseButton1Click:Connect(function()
-        local url = scripts[name]
-        loadstring(game:HttpGet(url))()
+        local success, err = pcall(function()
+            local code = game:HttpGet(script.url)
+            loadstring(code)()
+        end)
+        if not success then
+            warn("Failed to execute script: " .. err)
+        end
     end)
 end
 
