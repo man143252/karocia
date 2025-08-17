@@ -1,2 +1,2 @@
-game.Players.LocalPlayer.Character.Humanoid.JumpPower = 500
-print("Jump script activated!")
+local humanoid = game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+humanoid.JumpHeight = 500  -- Adjust to desired jump height
