@@ -1,0 +1,2 @@
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
+print("Jump script activated!")
